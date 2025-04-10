@@ -11,7 +11,7 @@ export default function Home() {
           {/* Left Content */}
           <div className="lg:w-1/2">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#2D2D2D] leading-tight mb-6">
-              We collaborate to build digital experiences
+              We collaborate to build Artificial Intelligence experiences
             </h1>
             <p className="text-[#2D2D2D] mb-8 max-w-xl">
             We collaborate to build digital experiences that are not only functional but impactful. By combining creativity, strategy, and cutting-edge technology, we design platforms that connect with users, solve real problems, and elevate brands. Every project is a partnership — rooted in trust, innovation, and a shared vision to create meaningful digital solutions.
