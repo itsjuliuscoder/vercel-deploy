@@ -1,36 +1,107 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital Experience Collaboration
+
+A modern landing page built with Next.js and Tailwind CSS.
+
+## Features
+
+- Responsive design
+- Modern UI with glass-like components
+- Smooth animations
+- SEO optimized
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Learn More
+## CI/CD Pipeline
 
-To learn more about Next.js, take a look at the following resources:
+This project includes a robust CI/CD pipeline using GitHub Actions that automates the build, test, and deployment processes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Pipeline Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Staging Workflow** (.github/workflows/staging.yaml)
+   - Triggered on:
+     - Push to the `develop` branch
+     - Pull requests to `main` or `develop` branches
+     - Manual trigger via GitHub interface
+   - Creates preview deployments for all changes
+   - For PRs, adds a comment with the preview URL
 
-## Deploy on Vercel
+2. **Production Workflow** (.github/workflows/production.yaml)
+   - Triggered on:
+     - Push to the `main` branch
+     - Manual trigger via GitHub interface
+   - Deploys the application to production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Setting Up the Pipeline
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To use the CI/CD pipeline, you need to add the following secrets to your GitHub repository:
+
+1. `VERCEL_TOKEN`: Your Vercel authentication token
+2. `VERCEL_ORG_ID`: Your Vercel organization ID
+3. `VERCEL_PROJECT_ID`: Your Vercel project ID
+
+#### Getting Vercel Credentials
+
+1. Install the Vercel CLI and log in:
+```bash
+npm i -g vercel
+vercel login
+```
+
+2. Link your project to Vercel:
+```bash
+vercel link
+```
+
+3. Get your project information:
+```bash
+vercel whoami  # Get your user and team IDs
+vercel project ls  # Get your project ID
+```
+
+4. Generate a token from the Vercel dashboard: Settings → Tokens
+
+### Workflow
+
+1. Create a feature branch from `develop` for your work
+2. Make changes and create a PR to `develop`
+3. The staging workflow will build and deploy a preview
+4. After review, merge into `develop` for staging deployment
+5. When ready for production, create a PR from `develop` to `main`
+6. After review, merge into `main` for production deployment
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
